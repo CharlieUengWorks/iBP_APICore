@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "MyAllowSpecificOrigins",
+    options.AddPolicy(name: "AllowSpecificOrigins",
     policy =>
     {
         policy.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
@@ -20,7 +20,7 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 
 // UseCors must be placed before UseAuthorization
-app.UseCors("MyAllowSpecificOrigins");
+app.UseCors("AllowSpecificOrigins");
 
 app.UseAuthorization();
 
